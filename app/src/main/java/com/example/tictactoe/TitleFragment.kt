@@ -20,6 +20,9 @@ class TitleFragment : Fragment() {
         view.findViewById<Button>(R.id.buttonSinglePlayer).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.navigateToVyberObtiaznostiFragment)
         }
+        view.findViewById<Button>(R.id.buttonSettings).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.navigateToSettingsFragment)
+        }
 
         return view
 
