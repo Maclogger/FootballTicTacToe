@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity"
     android:background="#048a81">
-
 
     <TextView
         android:id="@+id/textView"
@@ -18,15 +19,15 @@
         android:text="FootBall\nTic Tac Toe"
         android:textColor="#FFFFFF"
         android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSinglePlayer"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEasy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/hracNaRadeObrazok" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/hracNaRadeObrazok"
         android:layout_width="300dp"
         android:layout_height="180dp"
         android:layout_marginTop="52dp"
@@ -37,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonSinglePlayer"
+        android:id="@+id/buttonEasy"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#d9d7dd"
@@ -46,13 +47,13 @@
         android:textColor="#a98743"
         android:textSize="35sp"
         app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMultiPlayer"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMedium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonMultiPlayer"
+        android:id="@+id/buttonMedium"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#d9d7dd"
@@ -61,13 +62,13 @@
         android:textColor="#a98743"
         android:textSize="35sp"
         app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSettings"
+        app:layout_constraintBottom_toTopOf="@+id/buttonHard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonSettings"
+        android:id="@+id/buttonHard"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"

@@ -7,30 +7,30 @@
     android:background="#048a81">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/nadpisHracNaRade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hráč na rade: "
         android:fontFamily="@font/dekko"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintBottom_toTopOf="@+id/polickaGrid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/hracNaRadeObrazok"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/Ocko"
-        app:layout_constraintBottom_toBottomOf="@+id/title"
+        android:src="@drawable/ocko"
+        app:layout_constraintBottom_toBottomOf="@+id/nadpisHracNaRade"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/title"
-        app:layout_constraintTop_toTopOf="@+id/title" />
+        app:layout_constraintStart_toEndOf="@+id/nadpisHracNaRade"
+        app:layout_constraintTop_toTopOf="@+id/nadpisHracNaRade" />
 
     <GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/polickaGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
@@ -58,8 +58,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:src="@drawable/image1" />
+            android:layout_columnWeight="1"/>
+        <!--android:src="@drawable/image1"-->
 
         <ImageView
             android:layout_width="0dp"
@@ -138,18 +138,16 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1" />
-
-        <!-- Add more ImageViews here -->
 
     </GridLayout>
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/textovePole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintTop_toBottomOf="@+id/polickaGrid"
         tools:layout_editor_absoluteX="0dp"
         android:text="Lionel Messi"
         android:fontFamily="@font/dekko"
@@ -157,6 +155,7 @@
         android:textColor="#FFFFFF"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        />
+        android:drawableEnd="@drawable/magnifying_glass_icon" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

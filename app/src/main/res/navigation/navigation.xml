@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/titleFragment">
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.tictactoe.TitleFragment"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/navigateToVyberObtiaznostiFragment"
+            app:destination="@id/vyberObtiaznostiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.tictactoe.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/navigateToTitleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vyberObtiaznostiFragment"
+        android:name="com.example.tictactoe.VyberObtiaznostiFragment"
+        android:label="fragment_vyber_obtiaznosti"
+        tools:layout="@layout/fragment_vyber_obtiaznosti" >
+        <action
+            android:id="@+id/navigateToGameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+</navigation>
