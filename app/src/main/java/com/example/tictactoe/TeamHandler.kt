@@ -2,7 +2,7 @@ package com.example.tictactoe
 
 import android.view.View
 
-class TeamHandler(val difficulty: Int, view: View) {
+class TeamHandler(val difficulty: Int?, view: View) {
     val allTeams = loadTeamsFromFile(view)
     var teamsA = Array(3){"empty"}
     var teamsB = Array(3){"empty"}

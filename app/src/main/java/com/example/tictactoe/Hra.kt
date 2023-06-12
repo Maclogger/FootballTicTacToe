@@ -3,11 +3,11 @@ package com.example.tictactoe
 import android.view.View
 import kotlin.random.Random
 
-class Hra(view: View) {
+class Hra(view: View, difficulty: Int?) {
 
 
     val view = view
-    val teamHandler = TeamHandler(1, view)
+    val teamHandler = TeamHandler(difficulty, view)
     val policka = Array(4) { Array(4) { "empty" } }
     var hracNaRade = Random.nextInt(1)
 

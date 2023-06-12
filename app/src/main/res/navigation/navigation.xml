@@ -14,15 +14,6 @@
             app:destination="@id/vyberObtiaznostiFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gameFragment"
-        android:name="com.example.tictactoe.GameFragment"
-        android:label="fragment_game"
-        tools:layout="@layout/fragment_game" >
-        <action
-            android:id="@+id/navigateToTitleFragment"
-            app:destination="@id/titleFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/vyberObtiaznostiFragment"
         android:name="com.example.tictactoe.VyberObtiaznostiFragment"
         android:label="fragment_vyber_obtiaznosti"
@@ -30,5 +21,14 @@
         <action
             android:id="@+id/navigateToGameFragment"
             app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.tictactoe.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/navigateToTitleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
 </navigation>

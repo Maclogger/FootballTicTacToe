@@ -17,10 +17,9 @@ class TitleFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_title, container, false)
-        view.findViewById<Button>(R.id.buttonEasy).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.navigateToGameFragment)
+        view.findViewById<Button>(R.id.buttonSinglePlayer).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.navigateToVyberObtiaznostiFragment)
         }
-
 
         return view
 
