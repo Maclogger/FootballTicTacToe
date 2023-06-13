@@ -1,17 +1,23 @@
 package com.example.tictactoe
 
+import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 import android.view.View
+import android.widget.GridLayout
+import android.widget.ImageView
 import kotlin.random.Random
 
-class Hra(view: View, difficulty: Int?) {
+class Hra(private val view: View, difficulty: Int?, private val gameFragment: GameFragment) {
 
-
-    val view = view
-    val teamHandler = TeamHandler(difficulty, view)
     val policka = Array(4) { Array(4) { "empty" } }
-    var hracNaRade = Random.nextInt(1)
+    var hracNaRade = Random.nextInt(2)
+    val db: SQLiteDatabase
+    val databaseHelper: MyDatabaseHelper
+
 
     init {
+        val teamHandler = TeamHandler(difficulty, view)
+
         val teamsA = teamHandler.getTeams('A')
         val teamsB = teamHandler.getTeams('B')
 
@@ -24,7 +30,33 @@ class Hra(view: View, difficulty: Int?) {
                 policka[i][0] = teamsB[i - 1]
             }
         }
+
+        databaseHelper = MyDatabaseHelper(this.view.context, teamHandler.getAllTeamNames())
+        db = databaseHelper.writableDatabase
     }
 
+
+    fun napisaloSaSlovo(
+        menoHracaOdUzivatela: String,
+        kliknutePolicko: ImageView?,
+        r: Int,
+        s: Int,
+        gridLayout: GridLayout
+    ) {
+
+
+
+        val nazovTimuA = policka[0][s].removeSuffix("_small")
+        val nazovTimuB = policka[r][0].removeSuffix("_small")
+
+        Log.d("ok", "menoHraca: $menoHracaOdUzivatela, nazovTimuA: $nazovTimuA, nazovTimuB: $nazovTimuB")
+
+        if (databaseHelper.jeToSpravneMeno(menoHracaOdUzivatela, nazovTimuA, nazovTimuB, db)) {
+
+            policka[r][s] = if (hracNaRade == 0) "ocko" else "xko"
+            kliknutePolicko?.setOnClickListener(null)
+            //vyrieš posun ťahu, a hlavne teraz iba nastavenie backendu ocko a xko. Nie priamo GUI. To nech sa aktualizuje potom vo Fragmente
+        }
+    }
 }
 

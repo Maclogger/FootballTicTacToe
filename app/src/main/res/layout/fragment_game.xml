@@ -149,13 +149,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/polickaGrid"
         tools:layout_editor_absoluteX="0dp"
-        android:text="Lionel Messi"
+        android:hint="Lionel Messi"
         android:fontFamily="@font/dekko"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:drawableEnd="@drawable/magnifying_glass_icon" />
+        android:drawableEnd="@drawable/magnifying_glass_icon"
+        android:singleLine="true"
+        android:enabled="false"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

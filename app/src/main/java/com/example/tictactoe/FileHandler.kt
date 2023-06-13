@@ -1,11 +1,11 @@
 package com.example.tictactoe
 
 import android.view.View
+import java.io.InputStream
 
 
-class FileHandler(view: View) {
+class FileHandler(inputStream : InputStream) {
 
-    val inputStream = view.context.resources.openRawResource(R.raw.teams)
     val lines = inputStream.bufferedReader().readLines()
     val iterator = lines.iterator()
 
@@ -16,5 +16,10 @@ class FileHandler(view: View) {
     fun getNext(): String {
         return iterator.next()
     }
+
+    fun getAll(): ArrayList<String> {
+        return ArrayList(lines)
+    }
+
 }
 

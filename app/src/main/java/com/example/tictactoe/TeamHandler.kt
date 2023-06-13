@@ -1,5 +1,6 @@
 package com.example.tictactoe
 
+import android.util.Log
 import android.view.View
 
 class TeamHandler(val difficulty: Int?, view: View) {
@@ -9,7 +10,11 @@ class TeamHandler(val difficulty: Int?, view: View) {
 
     init {
         if (difficulty == 0) {
-            teamsA = allTeams.shuffled().take(teamsA.size).toTypedArray()
+            //TODO - odstrániť komentár//teamsA = allTeams.shuffled().take(teamsA.size).toTypedArray()
+            teamsA[0] = "arsenal"
+            teamsA[1] = "chelsea"
+            teamsA[2] = "liverpool"
+
             for (i in 0..teamsA.size - 1) {
                 teamsA[i] = teamsA[i] + "_small"
             }
@@ -32,7 +37,7 @@ class TeamHandler(val difficulty: Int?, view: View) {
 
     private fun loadTeamsFromFile(view: View): ArrayList<String> {
         val sol = ArrayList<String>()
-        val fileHandler = FileHandler(view)
+        val fileHandler = FileHandler(view.context.resources.openRawResource(R.raw.teams))
         while (fileHandler.hasNextLine()) {
             sol.add(fileHandler.getNext())
         }
@@ -45,9 +50,13 @@ class TeamHandler(val difficulty: Int?, view: View) {
         } else if (c == 'B') {
             return teamsB
         } else {
-            println("Neplatný znak tímu. Možnosti sú iba 'A' a 'B'!!!")
+            Log.d("chyba", "Neplatný znak tímu. Možnosti sú iba 'A' a 'B'!!!")
             return null
         }
+    }
+
+    fun getAllTeamNames(): ArrayList<String> {
+        return allTeams
     }
 
 
