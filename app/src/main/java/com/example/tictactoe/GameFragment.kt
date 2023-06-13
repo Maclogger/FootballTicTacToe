@@ -2,9 +2,12 @@ package com.example.tictactoe
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +15,13 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 
 class GameFragment : Fragment() {
     var kliknutePolicko: ImageView? = null
@@ -127,9 +133,13 @@ class GameFragment : Fragment() {
 
     public fun aktualizujGui(hra: Hra, view: View, gridLayout: GridLayout?) {
         zrusKlavesnicu()
+        val handler = Handler(Looper.getMainLooper())
         nastavPovolenieTextInputu(view, kliknutePolicko != null)
         aktualizujPolicka(hra, view, gridLayout)
-        aktualizujHracaNaRade(hra, view)
+        handler.postDelayed({
+            aktualizujHracaNaRade(hra, view)
+        }, 2300) // 2000 milisekúnd = 2 sekundy
+
     }
 
     private fun nastavPovolenieTextInputu(view: View, b: Boolean): EditText {
@@ -167,19 +177,21 @@ class GameFragment : Fragment() {
     }
 
     fun nespravnaOdpoved() {
-        val textView = rootview?.findViewById<TextView>(R.id.nadpisHracNaRade)
-        val handler = Handler(Looper.getMainLooper())
 
-        if (textView != null) {
-            textView.text = getString(R.string.nespravne)
-        }
+        val snackbar = Snackbar.make(rootview, "Nesprávne, ide ďalší hráč.", Snackbar.LENGTH_SHORT)
+        val snackbarView = snackbar.view
+        val textView = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
+        textView.setTextColor(Color.parseColor("#FFFFFF"))
+        textView.textSize = 28f
+        snackbarView.layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        val typeface = context?.let { ResourcesCompat.getFont(it, R.font.dekko) }
+        textView.typeface = typeface
 
-
-        handler.postDelayed({
-            if (textView != null) {
-                textView.text = getString(R.string.hrac_na_rade)
-            }
-        }, 2000) // 2000 milisekúnd = 2 sekundy
+        val params = snackbarView.layoutParams as FrameLayout.LayoutParams
+        params.gravity = Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL
+        snackbarView.layoutParams = params
+        snackbar.show()
     }
 
     fun spravnaOdpoved() {

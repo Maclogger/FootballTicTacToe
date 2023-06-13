@@ -1,6 +1,8 @@
 package com.example.tictactoe
 
 import android.database.sqlite.SQLiteDatabase
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.GridLayout
@@ -59,6 +61,7 @@ class Hra(private val view: View, difficulty: Int?, private val gameFragment: Ga
         } else {
             gameFragment.nespravnaOdpoved()
         }
+
         gameFragment.kliknutePolicko = null
         posunTah()
         gameFragment.aktualizujGui(this, view, gridLayout)
@@ -66,7 +69,6 @@ class Hra(private val view: View, difficulty: Int?, private val gameFragment: Ga
         if (vysledokKola != -1) {
             gameFragment.koniecHry(vysledokKola)
         }
-
     }
 
     private fun posunTah() {
