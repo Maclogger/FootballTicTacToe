@@ -1,5 +1,32 @@
 <resources>
     <string name="app_name">TicTacToe</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zmluvne_podmienky">Zmluvné podmienky</string>
+    <string name="caste_otazky">Časté otázky</string>
+    <string name="kontakt">Kontakt:</string>
+    <string name="jazyk">Jazyk:</string>
+    <string name="styl">Štýl:</string>
+    <string name="nastavenia">Nastavenia</string>
+    <string name="hrac_na_rade">Hráč na rade:</string>
+    <string name="lionel_messi">Lionel Messi</string>
+    <string name="tazka">Ťažká</string>
+    <string name="stredna">Stredná</string>
+    <string name="lahka">Ľahká</string>
+    <string name="vyberte_si_obtiaznost">Vyberte si\nobtiažnosť</string>
+    <string name="pokracovat">Pokračovať</string>
+    <string name="je_to_remiza">Je to remíza.</string>
+    <string name="koniec_hry">Koniec hry!</string>
+    <string name="nastavenia_text">Nastavenia</string>
+    <string name="viac_hracov">Viac hráčov</string>
+    <string name="jeden_hrac">Jeden hráč</string>
+    <string name="nazov_hry">FootBall\nTic Tac Toe</string>
+    <string name="winner_o">Víťaz je 0</string>
+    <string name="winner_x">Víťaz je X</string>
+    <string name="naozaj_skoncit_hru">"Naozaj chcete skončiť túto hru?"</string>
+    <string name="ano">Áno</string>
+    <string name="nie">Nie</string>
+    <string name="nespravne">Nesprávne!!!</string>
+    <string name="vyborne">Výborne!!!</string>
+
+
 </resources>

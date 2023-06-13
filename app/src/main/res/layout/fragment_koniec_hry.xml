@@ -6,63 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".MainActivity"
+    tools:context=".KoniecHryFragment"
     android:background="#048a81">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nadpisKoniecHry2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:fontFamily="@font/dekko"
         android:gravity="center"
         android:lineSpacingExtra="-20sp"
-        android:text="@string/vyberte_si_obtiaznost"
+        android:text="@string/koniec_hry"
         android:textColor="#FFFFFF"
         android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEasy"
+        app:layout_constraintBottom_toTopOf="@+id/pokracovatButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonEasy"
-        android:layout_width="250dp"
+    <TextView
+        android:id="@+id/hlavnyText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#d9d7dd"
         android:fontFamily="@font/dekko"
-        android:text="@string/lahka"
-        android:textColor="#a98743"
-        android:textSize="35sp"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMedium"
+        android:gravity="center"
+        android:lineSpacingExtra="-20sp"
+        android:text="@string/je_to_remiza"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/pokracovatButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nadpisKoniecHry2" />
 
     <Button
-        android:id="@+id/buttonMedium"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#d9d7dd"
-        android:fontFamily="@font/dekko"
-        android:text="@string/stredna"
-        android:textColor="#a98743"
-        android:textSize="35sp"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonHard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonHard"
+        android:id="@+id/pokracovatButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:backgroundTint="#d9d7dd"
         android:fontFamily="@font/dekko"
-        android:text="@string/tazka"
+        android:text="@string/pokracovat"
         android:textColor="#a98743"
         android:textSize="35sp"
         app:cornerRadius="15dp"

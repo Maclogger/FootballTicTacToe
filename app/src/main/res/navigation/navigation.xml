@@ -31,6 +31,9 @@
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
+            android:id="@+id/navigateToKoniecHry"
+            app:destination="@id/koniecHryFragment" />
+        <action
             android:id="@+id/navigateToTitleFragment"
             app:destination="@id/titleFragment" />
     </fragment>
@@ -38,5 +41,18 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.tictactoe.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/navigateToTitleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/koniecHryFragment"
+        android:name="com.example.tictactoe.KoniecHryFragment"
+        android:label="fragment_koniec_hry"
+        tools:layout="@layout/fragment_koniec_hry" >
+        <action
+            android:id="@+id/navigateToTitleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
 </navigation>

@@ -17,7 +17,7 @@
         android:fontFamily="@font/dekko"
         android:gravity="center"
         android:lineSpacingExtra="-20sp"
-        android:text="Nastavenia"
+        android:text="@string/nastavenia"
         android:textColor="#FFFFFF"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/stylBox"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/dekko"
-            android:text="Styl:"
+            android:text="@string/styl"
             android:textColor="#a98743"
             android:textSize="35sp" />
 
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/dekko"
-            android:text="Jazyk:"
+            android:text="@string/jazyk"
             android:textColor="#a98743"
             android:textSize="35sp" />
 
@@ -104,12 +104,14 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/slovenskaVlajka"
                 android:layout_width="55dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/sk" />
 
             <ImageView
+                android:id="@+id/anglickaVlajka"
                 android:layout_width="55dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
@@ -135,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/dekko"
-            android:text="Kontakt:"
+            android:text="@string/kontakt"
             android:textColor="#a98743"
             android:textSize="35sp" />
 
@@ -184,7 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/dekko"
-            android:text="FAQ"
+            android:text="@string/caste_otazky"
             android:textColor="#a98743"
             android:textSize="35sp" />
     </RelativeLayout>
@@ -208,7 +210,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/dekko"
-            android:text="Terms of Conditions"
+            android:text="@string/zmluvne_podmienky"
             android:textColor="#a98743"
             android:textSize="35sp" />
     </RelativeLayout>

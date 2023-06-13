@@ -1,7 +1,10 @@
 package com.example.tictactoe
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,28 +14,49 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.navigation.Navigation
 
 class GameFragment : Fragment() {
+    var kliknutePolicko: ImageView? = null
+    lateinit var rootview: View
 
-    private var kliknutePolicko: ImageView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_game, container, false)
+        rootview = inflater.inflate(R.layout.fragment_game, container, false)
         val difficulty = arguments?.getInt("difficulty")
-        this.spustiHru(view, difficulty)
-        //todo koniec hry navigate ->
-        return view
+        this.spustiHru(rootview, difficulty)
+        return rootview
     }
+
 
     private fun spustiHru(view: View, difficulty: Int?) {
         val gridLayout = view.findViewById<GridLayout>(R.id.polickaGrid)
         val hra = Hra(view, difficulty, this)
+        nastavListenerNaKoniecButton(view, gridLayout)
         aktualizujGui(hra, view, gridLayout)
         nastavListeneryNaPolicka(view, hra, gridLayout)
         nastavListenerNaPotvrdenieTextu(view, hra)
+    }
+
+    private fun nastavListenerNaKoniecButton(view: View, gridLayout: GridLayout) {
+        val imageView = gridLayout.getChildAt(0) as ImageView
+        imageView.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage(getString(R.string.naozaj_skoncit_hru))
+                .setPositiveButton(getString(R.string.ano)) { dialog, id ->
+                    // Užívateľ potvrdil akciu
+                    Navigation.findNavController(rootview).navigate(R.id.navigateToTitleFragment)
+                }
+                .setNegativeButton(getString(R.string.nie)) { dialog, id ->
+                    // Užívateľ zrušil akciu
+                }
+            val alert = builder.create()
+            alert.show()
+        }
     }
 
     private fun nastavListenerNaPotvrdenieTextu(view: View, hra: Hra) {
@@ -72,8 +96,10 @@ class GameFragment : Fragment() {
         for (r in 1..hra.policka.size - 1) {
             for (s in 1..hra.policka[r].size - 1) {
                 val imageView = gridLayout.getChildAt(i) as ImageView
-                imageView.setOnClickListener {
-                    kliknutieNaPolicko(hra, view, gridLayout, imageView)
+                if (imageView.getTag() != "polozene") {
+                    imageView.setOnClickListener {
+                        kliknutieNaPolicko(hra, view, gridLayout, imageView)
+                    }
                 }
                 i++
                 if (i % 4 == 0) {
@@ -92,19 +118,32 @@ class GameFragment : Fragment() {
         aktualizujGui(hra, view, gridLayout)
         imageView.setImageResource(R.drawable.zvyraznene)
         //aktivovať písanie na klávesnicu do textového poľa: "android:id="@+id/textovePole""
-        val editText = view.findViewById<EditText>(R.id.textovePole)
-        editText.setEnabled(true)
+        val editText = nastavPovolenieTextInputu(view, true)
         kliknutePolicko = imageView
         editText.requestFocus()
         val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
     }
 
-    private fun aktualizujGui(hra: Hra, view: View, gridLayout: GridLayout?) {
+    public fun aktualizujGui(hra: Hra, view: View, gridLayout: GridLayout?) {
+        zrusKlavesnicu()
+        nastavPovolenieTextInputu(view, kliknutePolicko != null)
         aktualizujPolicka(hra, view, gridLayout)
         aktualizujHracaNaRade(hra, view)
-        view.findViewById<EditText>(R.id.textovePole).let { it.isEnabled = kliknutePolicko != null }
     }
+
+    private fun nastavPovolenieTextInputu(view: View, b: Boolean): EditText {
+        val editText = view.findViewById<EditText>(R.id.textovePole)
+        editText.setEnabled(b)
+        return editText
+    }
+
+    private fun zrusKlavesnicu() {
+        val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(rootview?.rootView?.windowToken, 0)
+    }
+
+
 
     private fun aktualizujHracaNaRade(hra: Hra, view: View) {
         if (hra.hracNaRade == 0) {
@@ -127,5 +166,41 @@ class GameFragment : Fragment() {
         }
     }
 
+    fun nespravnaOdpoved() {
+        val textView = rootview?.findViewById<TextView>(R.id.nadpisHracNaRade)
+        val handler = Handler(Looper.getMainLooper())
 
+        if (textView != null) {
+            textView.text = getString(R.string.nespravne)
+        }
+
+
+        handler.postDelayed({
+            if (textView != null) {
+                textView.text = getString(R.string.hrac_na_rade)
+            }
+        }, 2000) // 2000 milisekúnd = 2 sekundy
+    }
+
+    fun spravnaOdpoved() {
+        val textView = rootview?.findViewById<TextView>(R.id.nadpisHracNaRade)
+        val handler = Handler(Looper.getMainLooper())
+
+        if (textView != null) {
+            textView.text = getString(R.string.vyborne)
+        }
+
+
+        handler.postDelayed({
+            if (textView != null) {
+                textView.text = getString(R.string.hrac_na_rade)
+            }
+        }, 2000) // 2000 milisekúnd = 2 sekundy
+    }
+
+    fun koniecHry(vysledokKola: Int) {
+        val bundle = Bundle()
+        bundle.putInt("vysledok", vysledokKola)
+        Navigation.findNavController(rootview).navigate(R.id.navigateToKoniecHry, bundle)
+    }
 }

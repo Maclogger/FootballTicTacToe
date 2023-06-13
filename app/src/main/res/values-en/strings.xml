@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zmluvne_podmienky">Terms and Conditions</string>
+    <string name="caste_otazky">FAQ</string>
+    <string name="kontakt">Contact:</string>
+    <string name="jazyk">Language:</string>
+    <string name="styl">Style:</string>
+    <string name="nastavenia">Settings</string>
+    <string name="hrac_na_rade">Player\'s turn:</string>
+    <string name="lionel_messi">Lionel Messi</string>
+    <string name="tazka">Hard</string>
+    <string name="stredna">Medium</string>
+    <string name="lahka">Easy</string>
+    <string name="vyberte_si_obtiaznost">Choose\nDifficulty</string>
+    <string name="pokracovat">Continue</string>
+    <string name="je_to_remiza">It\'s a draw.</string>
+    <string name="koniec_hry">End of game!</string>
+    <string name="nastavenia_text">Settings</string>
+    <string name="viac_hracov">MultiPlayer</string>
+    <string name="jeden_hrac">SinglePlayer</string>
+    <string name="nazov_hry">FootBall\nTic Tac Toe</string>
+    <string name="winner_o">The winner is 0</string>
+    <string name="winner_x">The winner is X</string>
+    <string name="naozaj_skoncit_hru">"Are you sure you want to cancel the game?"</string>
+    <string name="ano">Yes</string>
+    <string name="nie">No</string>
+    <string name="nespravne">Wrong!!!</string>
+    <string name="vyborne">Awesome!!!</string>
+
+</resources>

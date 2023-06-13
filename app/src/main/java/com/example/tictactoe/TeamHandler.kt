@@ -30,7 +30,7 @@ class TeamHandler(val difficulty: Int?, view: View) {
                 teamsB[i] = teamsB[i] + "_small"
             }
         } else {
-            println("Iná obtiažnosť zatiaľ nie je implementovaná!!!")
+            Log.d("ERROR!!!", "Iná obtiažnosť zatiaľ nie je implementovaná!!!")
         }
     }
 

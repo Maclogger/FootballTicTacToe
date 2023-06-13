@@ -44,7 +44,6 @@ class MyDatabaseHelper(private val context: Context, private val allTeamNames: A
         for (menoHraca in fileHandler.getAll()) {
             if (menoHraca == "" || nazovTimu == "") continue
             contentValues.put("name", menoHraca)
-            Log.d("ok", "menoHraca: $menoHraca nazovTimu: $nazovTimu")
             db.execSQL("INSERT INTO players (meno, teamName) VALUES (?, ?)", arrayOf(menoHraca, nazovTimu))
         }
     }

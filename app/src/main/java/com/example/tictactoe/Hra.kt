@@ -13,9 +13,11 @@ class Hra(private val view: View, difficulty: Int?, private val gameFragment: Ga
     var hracNaRade = Random.nextInt(2)
     val db: SQLiteDatabase
     val databaseHelper: MyDatabaseHelper
+    val rozhodca = Rozhodca(this)
 
 
     init {
+        policka[0][0] = "koniec"
         val teamHandler = TeamHandler(difficulty, view)
 
         val teamsA = teamHandler.getTeams('A')
@@ -49,14 +51,26 @@ class Hra(private val view: View, difficulty: Int?, private val gameFragment: Ga
         val nazovTimuA = policka[0][s].removeSuffix("_small")
         val nazovTimuB = policka[r][0].removeSuffix("_small")
 
-        Log.d("ok", "menoHraca: $menoHracaOdUzivatela, nazovTimuA: $nazovTimuA, nazovTimuB: $nazovTimuB")
-
         if (databaseHelper.jeToSpravneMeno(menoHracaOdUzivatela, nazovTimuA, nazovTimuB, db)) {
-
             policka[r][s] = if (hracNaRade == 0) "ocko" else "xko"
             kliknutePolicko?.setOnClickListener(null)
-            //vyrieš posun ťahu, a hlavne teraz iba nastavenie backendu ocko a xko. Nie priamo GUI. To nech sa aktualizuje potom vo Fragmente
+            kliknutePolicko?.setTag("polozene")
+            gameFragment.spravnaOdpoved()
+        } else {
+            gameFragment.nespravnaOdpoved()
         }
+        gameFragment.kliknutePolicko = null
+        posunTah()
+        gameFragment.aktualizujGui(this, view, gridLayout)
+        val vysledokKola = rozhodca.skontroluj(3)
+        if (vysledokKola != -1) {
+            gameFragment.koniecHry(vysledokKola)
+        }
+
+    }
+
+    private fun posunTah() {
+        hracNaRade = (hracNaRade + 1) % 2
     }
 }
 
