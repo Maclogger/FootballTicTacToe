@@ -16,7 +16,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import java.util.Locale
 
-
+/*
+    Slúži na spracovanie obrazovky nastavenia. Obsahuje listenery na tlačidlá.
+    Nastavuje rôzne štýly, jazyk. Presmeruváva do iných aplikácií.
+ */
 class SettingsFragment : Fragment() {
     private val sharedViewModel by activityViewModels<SharedViewModel>()
 

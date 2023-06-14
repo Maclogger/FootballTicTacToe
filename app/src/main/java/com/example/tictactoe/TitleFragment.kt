@@ -13,6 +13,9 @@ import androidx.coordinatorlayout.widget.ViewGroupUtils
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 
+/*
+    Slúži na spracovanie hlavnej obrazovky - hlavného menu
+ */
 class TitleFragment : Fragment() {
     private val sharedViewModel by activityViewModels<SharedViewModel>()
 

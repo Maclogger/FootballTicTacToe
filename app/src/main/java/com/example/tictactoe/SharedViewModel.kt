@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
+/*
+    Slúži na udržiavanie stavu aktuálneho štýlu medzi fragmentami aplikácie.
+ */
 class SharedViewModel : ViewModel() {
     private var currentMainStyle = MutableLiveData(R.style.mainGreenStyle)
     private var currentSecondaryStyle = MutableLiveData(R.style.secondaryGreenStyle)

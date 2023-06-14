@@ -3,7 +3,9 @@ package com.example.tictactoe
 import android.view.View
 import java.io.InputStream
 
-
+/*
+    Slúži na spracovanie textových súborov
+ */
 class FileHandler(inputStream : InputStream) {
 
     private val lines = inputStream.bufferedReader().readLines()

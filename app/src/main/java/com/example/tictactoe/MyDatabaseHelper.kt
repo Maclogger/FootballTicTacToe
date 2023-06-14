@@ -5,7 +5,10 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-
+/*
+    rozširuje triedu SQLiteOpenHelper, slúži na správu databázového systému.
+    Vytvára 2 tabuľky, a stará sa o výber dát z nich za pomoci SQL príkazov ako je select.
+ */
 class MyDatabaseHelper(private val context: Context,
                        private val allTeamNames: ArrayList<String>)
     : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

@@ -1,5 +1,8 @@
 package com.example.tictactoe
 
+/*
+    kontroluje výsledok hry piškvoriek
+ */
 class Rozhodca(hra: Hra) {
     private val policka = hra.getPolicka()
     //0 = O, 1 = X, 2 = remíza, -1 = nerozhodnuté

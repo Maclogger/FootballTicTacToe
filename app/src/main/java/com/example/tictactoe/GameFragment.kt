@@ -21,6 +21,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
+/*
+    Hlavný Fragment, obrazovka, kde sa nachádza samotné herné pole, textové pole na vstup od užívateľa....
+ */
 
 class GameFragment : Fragment() {
     private var kliknutePolicko: ImageView? = null

@@ -10,6 +10,10 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 
+
+/*
+    Fragmen koncovej hry. Slúži na spracovanie obrazovky - koniec hry
+ */
 class KoniecHryFragment : Fragment() {
     private val sharedViewModel by activityViewModels<SharedViewModel>()
 

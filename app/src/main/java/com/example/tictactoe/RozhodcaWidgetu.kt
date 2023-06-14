@@ -1,5 +1,8 @@
 package com.example.tictactoe
 
+/*
+    kontroluje výsledok hry malých piškvoriek pre widget
+ */
 class RozhodcaWidgetu {
     fun skontroluj(policka: Array<Array<String>>): Int {
         // Kontrola riadkov

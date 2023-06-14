@@ -11,7 +11,7 @@ import android.widget.RemoteViews
 import android.widget.Toast
 
 /**
- * Implementation of App Widget functionality.
+ * Implementácia widgetu - malé piškvorky na ploche
  */
 class MyTicTacToeWidget : AppWidgetProvider() {
     private var playerTurn = 0

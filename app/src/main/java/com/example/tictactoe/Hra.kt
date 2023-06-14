@@ -9,6 +9,11 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import kotlin.random.Random
 
+/*
+    Hra - jadro aplikácie, udržiava informácie o aktuálnom stave hry, hernom poli.
+    Obsahuje atribúty ako rozhodca, ktorý rozhoduje o výsledku hry.
+    Obsahuje atribút db, ktorý ma na starosti prácu s databázou
+ */
 class Hra(private val view: View, difficulty: Int?, private val gameFragment: GameFragment) {
 
     private val policka = Array(4) { Array(4) { "empty" } }

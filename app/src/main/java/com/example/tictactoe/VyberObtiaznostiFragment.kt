@@ -9,7 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-
+/*
+    Slúži na spracovanie obrazovky - výber obtiaznosti
+ */
 class VyberObtiaznostiFragment : Fragment() {
     private val sharedViewModel by activityViewModels<SharedViewModel>()
     override fun onCreateView(

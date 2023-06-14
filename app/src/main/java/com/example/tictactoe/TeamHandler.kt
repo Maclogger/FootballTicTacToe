@@ -3,6 +3,9 @@ package com.example.tictactoe
 import android.util.Log
 import android.view.View
 
+/*
+    zabezpečuje náhodný výber tímov z databázy podľa zvolenej náročnosti
+ */
 class TeamHandler(difficulty: Int?, view: View) {
     private val allTeams = loadTeamsFromFile(view)
     private var teamsA = Array(3){"empty"}
@@ -10,10 +13,11 @@ class TeamHandler(difficulty: Int?, view: View) {
 
     init {
         if (difficulty == 0) {
-            //TODO - odstrániť komentár//teamsA = allTeams.shuffled().take(teamsA.size).toTypedArray()
-            teamsA[0] = "arsenal"
-            teamsA[1] = "chelsea"
-            teamsA[2] = "liverpool"
+            //TODO - Pri obhajobe odkomentovať pre jednoduchšiu demonštráciu
+            teamsA = allTeams.shuffled().take(teamsA.size).toTypedArray()
+            //teamsA[0] = "arsenal"
+            //teamsA[1] = "chelsea"
+            //teamsA[2] = "liverpool"
 
             for (i in 0..teamsA.size - 1) {
                 teamsA[i] = teamsA[i] + "_small"
