@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/titleFragmentId"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,17 +8,18 @@
     android:layout_height="match_parent"
 
     tools:context=".MainActivity"
-    android:background="#048a81">
+    style="@style/mainGreenStyle"
+    >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nazovHryMain"
+        android:fontFamily="@font/dekko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dekko"
+        android:textColor="#FFFFFF"
         android:gravity="center"
         android:lineSpacingExtra="-20sp"
         android:text="@string/nazov_hry"
-        android:textColor="#FFFFFF"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSinglePlayer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,18 +37,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/dekko"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSinglePlayer"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#d9d7dd"
-        android:fontFamily="@font/dekko"
         android:text="@string/jeden_hrac"
-        android:textColor="#a98743"
-        android:textSize="35sp"
         app:cornerRadius="15dp"
+        android:fontFamily="@font/dekko"
+        android:textSize="30sp"
+        style="@style/secondaryGreenStyle"
         app:layout_constraintBottom_toTopOf="@+id/buttonMultiPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -56,13 +58,12 @@
         android:id="@+id/buttonMultiPlayer"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#d9d7dd"
-        android:fontFamily="@font/dekko"
         android:text="@string/viac_hracov"
-        android:textColor="#a98743"
-        android:textSize="35sp"
+        android:fontFamily="@font/dekko"
+        style="@style/secondaryGreenStyle"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSettings"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,16 +72,16 @@
         android:id="@+id/buttonSettings"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#d9d7dd"
         android:fontFamily="@font/dekko"
+        style="@style/secondaryGreenStyle"
+        android:textSize="30sp"
+        android:layout_marginBottom="60dp"
         android:text="@string/nastavenia_text"
-        android:textColor="#a98743"
-        android:textSize="35sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

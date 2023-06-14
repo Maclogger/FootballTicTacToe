@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 
 class KoniecHryFragment : Fragment() {
+    private val sharedViewModel by activityViewModels<SharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +29,19 @@ class KoniecHryFragment : Fragment() {
 
         view.findViewById<Button>(R.id.pokracovatButton).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.navigateToTitleFragment)
+        }
+
+
+        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+            // Nastav štýl pre hlavný fragment
+            val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
+            val backgroundColor = a?.getColor(0, 0)
+            a?.recycle()
+            backgroundColor?.let { view.setBackgroundColor(it) }
+        }
+        sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
+            // Nastav štýl pre jednotlivé komponenty programovo
+            view.findViewById<TextView>(R.id.pokracovatButton).setTextAppearance(style)
         }
         return view
     }

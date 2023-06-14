@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="mainGreenStyle">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#048a81</item>
+    </style>
+    <style name="secondaryGreenStyle">
+        <item name="android:textColor">#a98743</item>
+        <item name="android:backgroundTint">#FFFFFF</item>
+    </style>
+    <style name="mainPurpleStyle">
+        <item name="android:textColor">#dbe4ee</item>
+        <item name="android:background">#652ddf</item>
+    </style>
+    <style name="secondaryPurpleStyle">
+        <item name="android:textColor">#f17300</item>
+        <item name="android:backgroundTint">#dbe4ee</item>
+    </style>
+    <style name="mainDarkStyle">
+        <item name="android:textColor">#dbe4ee</item>
+        <item name="android:background">#272727</item>
+    </style>
+    <style name="secondaryDarkStyle">
+        <item name="android:textColor">#2B2B2B</item>
+        <item name="android:backgroundTint">#dbe4ee</item>
+    </style>
+</resources>

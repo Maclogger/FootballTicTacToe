@@ -20,12 +20,14 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 
 class GameFragment : Fragment() {
     var kliknutePolicko: ImageView? = null
     lateinit var rootview: View
+    private val sharedViewModel by activityViewModels<SharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,14 @@ class GameFragment : Fragment() {
         rootview = inflater.inflate(R.layout.fragment_game, container, false)
         val difficulty = arguments?.getInt("difficulty")
         this.spustiHru(rootview, difficulty)
+
+        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+            // Nastav štýl pre hlavný fragment
+            val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
+            val backgroundColor = a?.getColor(0, 0)
+            a?.recycle()
+            backgroundColor?.let { rootview.setBackgroundColor(it) }
+        }
         return rootview
     }
 
@@ -51,18 +61,27 @@ class GameFragment : Fragment() {
     private fun nastavListenerNaKoniecButton(view: View, gridLayout: GridLayout) {
         val imageView = gridLayout.getChildAt(0) as ImageView
         imageView.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setMessage(getString(R.string.naozaj_skoncit_hru))
-                .setPositiveButton(getString(R.string.ano)) { dialog, id ->
-                    // Užívateľ potvrdil akciu
+            val snackbar = Snackbar.make(rootview, getString(R.string.naozaj_skoncit_hru), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.ano)) {
+                    // User confirmed action
                     Navigation.findNavController(rootview).navigate(R.id.navigateToTitleFragment)
                 }
-                .setNegativeButton(getString(R.string.nie)) { dialog, id ->
-                    // Užívateľ zrušil akciu
-                }
-            val alert = builder.create()
-            alert.show()
+            val snackbarView = snackbar.view
+            val textView = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+            textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
+            textView.setTextColor(Color.parseColor("#FFFFFF"))
+            textView.textSize = 28f
+            val params = snackbarView.layoutParams as FrameLayout.LayoutParams
+            params.gravity = Gravity.CENTER
+            snackbarView.layoutParams = params
+
+            snackbarView.layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
+            val typeface = context?.let { ResourcesCompat.getFont(it, R.font.dekko) }
+            textView.typeface = typeface
+            snackbar.show()
         }
+
+
     }
 
     private fun nastavListenerNaPotvrdenieTextu(view: View, hra: Hra) {

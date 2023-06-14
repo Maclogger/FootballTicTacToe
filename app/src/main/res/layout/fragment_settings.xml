@@ -7,19 +7,20 @@
     android:layout_height="match_parent"
 
     tools:context=".MainActivity"
-    android:background="#048a81">
+    style="@style/mainGreenStyle"
+    >
 
 
     <TextView
+        android:fontFamily="@font/dekko"
         android:id="@+id/nadpisNastavenia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dekko"
         android:gravity="center"
         android:lineSpacingExtra="-20sp"
         android:text="@string/nastavenia"
-        android:textColor="#FFFFFF"
         android:textSize="60sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/stylBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,15 +41,17 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:fontFamily="@font/dekko"
+            android:id="@+id/stylText"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:fontFamily="@font/dekko"
             android:text="@string/styl"
-            android:textColor="#a98743"
-            android:textSize="35sp" />
+            style="@style/secondaryGreenStyle"/>
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -56,17 +59,20 @@
             android:orientation="horizontal">
 
             <View
+                android:id="@+id/greenStyleButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="#048a81" />
 
             <View
+                android:id="@+id/purpleStyleButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:background="#652ddf" />
 
             <View
+                android:id="@+id/darkStyleButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
@@ -88,13 +94,15 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/stylJazyk"
+            android:fontFamily="@font/dekko"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:fontFamily="@font/dekko"
+            style="@style/secondaryGreenStyle"
             android:text="@string/jazyk"
-            android:textColor="#a98743"
-            android:textSize="35sp" />
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -133,13 +141,15 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/stylKontakt"
+            android:fontFamily="@font/dekko"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/secondaryGreenStyle"
             android:layout_alignParentLeft="true"
-            android:fontFamily="@font/dekko"
             android:text="@string/kontakt"
-            android:textColor="#a98743"
-            android:textSize="35sp" />
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -149,18 +159,21 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/mailButton"
                 android:layout_width="55dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/mail" />
 
             <ImageView
+                android:id="@+id/discordButton"
                 android:layout_width="55dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/discord" />
 
             <ImageView
+                android:id="@+id/githubButton"
                 android:layout_width="55dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
@@ -182,13 +195,15 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/casteOtazkyText"
+            android:fontFamily="@font/dekko"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:fontFamily="@font/dekko"
+            style="@style/secondaryGreenStyle"
             android:text="@string/caste_otazky"
-            android:textColor="#a98743"
-            android:textSize="35sp" />
+            />
     </RelativeLayout>
 
     <RelativeLayout
@@ -206,13 +221,15 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/zmluvnePodmienkyText"
+            android:fontFamily="@font/dekko"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:fontFamily="@font/dekko"
+            style="@style/secondaryGreenStyle"
             android:text="@string/zmluvne_podmienky"
-            android:textColor="#a98743"
-            android:textSize="35sp" />
+            />
     </RelativeLayout>
 
 

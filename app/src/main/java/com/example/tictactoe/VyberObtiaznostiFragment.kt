@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 
 class VyberObtiaznostiFragment : Fragment() {
-
-
+    private val sharedViewModel by activityViewModels<SharedViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,9 +27,18 @@ class VyberObtiaznostiFragment : Fragment() {
             bundle.putInt("difficulty", 1) // 1 pre strednú obtiažnosť
             androidx.navigation.Navigation.findNavController(view).navigate(com.example.tictactoe.R.id.navigateToGameFragment, bundle)
         }
-        view.findViewById<Button>(R.id.buttonHard).setOnClickListener {
-            bundle.putInt("difficulty", 2) // 0 pre ťažkú obtiažnosť
-            Navigation.findNavController(view).navigate(R.id.navigateToGameFragment, bundle)
+        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+            // Nastav štýl pre hlavný fragment
+            val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
+            val backgroundColor = a?.getColor(0, 0)
+            a?.recycle()
+            backgroundColor?.let { view.setBackgroundColor(it) }
+        }
+
+        sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
+            // Nastav štýl pre jednotlivé komponenty programovo
+            view.findViewById<TextView>(R.id.buttonEasy).setTextAppearance(style)
+            view.findViewById<TextView>(R.id.buttonMedium).setTextAppearance(style)
         }
         return view
     }

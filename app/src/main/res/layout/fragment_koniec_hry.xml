@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
 
     tools:context=".KoniecHryFragment"
-    android:background="#048a81">
+    style="@style/mainGreenStyle">
 
     <TextView
         android:id="@+id/nadpisKoniecHry2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dekko"
         android:gravity="center"
+        android:fontFamily="@font/dekko"
+        android:textColor="#FFFFFF"
         android:lineSpacingExtra="-20sp"
         android:text="@string/koniec_hry"
-        android:textColor="#FFFFFF"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/pokracovatButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,11 +29,11 @@
         android:id="@+id/hlavnyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dekko"
         android:gravity="center"
+        android:fontFamily="@font/dekko"
+        android:textColor="#FFFFFF"
         android:lineSpacingExtra="-20sp"
         android:text="@string/je_to_remiza"
-        android:textColor="#FFFFFF"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/pokracovatButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,14 +42,13 @@
 
     <Button
         android:id="@+id/pokracovatButton"
+        style="@style/secondaryGreenStyle"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#d9d7dd"
         android:fontFamily="@font/dekko"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginBottom="60dp"
         android:text="@string/pokracovat"
-        android:textColor="#a98743"
-        android:textSize="35sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
