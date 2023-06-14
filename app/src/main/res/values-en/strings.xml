@@ -17,7 +17,7 @@
     <string name="je_to_remiza">It\'s a draw.</string>
     <string name="koniec_hry">End of game!</string>
     <string name="nastavenia_text">Settings</string>
-    <string name="viac_hracov">MultiPlayer</string>
+    <string name="spustit_hru">Play</string>
     <string name="jeden_hrac">SinglePlayer</string>
     <string name="nazov_hry">FootBall\nTic Tac Toe</string>
     <string name="winner_o">The winner is 0</string>

@@ -16,7 +16,7 @@
     <string name="je_to_remiza">Je to remíza.</string>
     <string name="koniec_hry">Koniec hry!</string>
     <string name="nastavenia_text">Nastavenia</string>
-    <string name="viac_hracov">Viac hráčov</string>
+    <string name="spustit_hru">Hrať</string>
     <string name="jeden_hrac">Jeden hráč</string>
     <string name="nazov_hry">FootBall\nTic Tac Toe</string>
     <string name="winner_o">Víťaz je 0</string>
@@ -26,6 +26,9 @@
     <string name="nie">Nie</string>
     <string name="nespravne">Nesprávne!!!</string>
     <string name="vyborne">Výborne!!!</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 
 
 </resources>

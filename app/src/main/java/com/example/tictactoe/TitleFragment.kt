@@ -41,7 +41,6 @@ class TitleFragment : Fragment() {
 
         sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre jednotlivé komponenty programovo
-            view.findViewById<TextView>(R.id.buttonSinglePlayer).setTextAppearance(style)
             view.findViewById<TextView>(R.id.buttonMultiPlayer).setTextAppearance(style)
             view.findViewById<TextView>(R.id.buttonSettings).setTextAppearance(style)
         }
