@@ -79,8 +79,6 @@ class GameFragment : Fragment() {
             textView.typeface = typeface
             snackbar.show()
         }
-
-
     }
 
     private fun nastavListenerNaPotvrdenieTextu(view: View, hra: Hra) {
@@ -104,15 +102,6 @@ class GameFragment : Fragment() {
             }
             false
         }
-
-        /*editText.setOnClickListener { v ->
-            val editText = v as EditText
-            val drawable = editText.compoundDrawables[2] // 2 is the index for the drawableEnd
-            if (drawable != null && event.rawX >= (editText.right - drawable.bounds.width())) {
-                // Handle click on magnifying glass icon here
-            }
-        }*/
-
     }
 
     private fun nastavListeneryNaPolicka(view: View, hra: Hra, gridLayout: GridLayout) {
@@ -213,12 +202,9 @@ class GameFragment : Fragment() {
     fun spravnaOdpoved() {
         val textView = rootview?.findViewById<TextView>(R.id.nadpisHracNaRade)
         val handler = Handler(Looper.getMainLooper())
-
         if (textView != null) {
             textView.text = getString(R.string.vyborne)
         }
-
-
         handler.postDelayed({
             if (textView != null) {
                 textView.text = getString(R.string.hrac_na_rade)
