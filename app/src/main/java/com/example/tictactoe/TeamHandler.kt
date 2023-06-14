@@ -3,10 +3,10 @@ package com.example.tictactoe
 import android.util.Log
 import android.view.View
 
-class TeamHandler(val difficulty: Int?, view: View) {
-    val allTeams = loadTeamsFromFile(view)
-    var teamsA = Array(3){"empty"}
-    var teamsB = Array(3){"empty"}
+class TeamHandler(difficulty: Int?, view: View) {
+    private val allTeams = loadTeamsFromFile(view)
+    private var teamsA = Array(3){"empty"}
+    private var teamsB = Array(3){"empty"}
 
     init {
         if (difficulty == 0) {
@@ -33,7 +33,6 @@ class TeamHandler(val difficulty: Int?, view: View) {
             Log.d("ERROR!!!", "Iná obtiažnosť zatiaľ nie je implementovaná!!!")
         }
     }
-
 
     private fun loadTeamsFromFile(view: View): ArrayList<String> {
         val sol = ArrayList<String>()

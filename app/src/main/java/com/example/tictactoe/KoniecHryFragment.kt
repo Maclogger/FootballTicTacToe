@@ -32,14 +32,14 @@ class KoniecHryFragment : Fragment() {
         }
 
 
-        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentMainStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre hlavný fragment
             val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
             val backgroundColor = a?.getColor(0, 0)
             a?.recycle()
             backgroundColor?.let { view.setBackgroundColor(it) }
         }
-        sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentSecondaryStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre jednotlivé komponenty programovo
             view.findViewById<TextView>(R.id.pokracovatButton).setTextAppearance(style)
         }

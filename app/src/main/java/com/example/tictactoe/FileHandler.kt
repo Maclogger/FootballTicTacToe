@@ -6,8 +6,8 @@ import java.io.InputStream
 
 class FileHandler(inputStream : InputStream) {
 
-    val lines = inputStream.bufferedReader().readLines()
-    val iterator = lines.iterator()
+    private val lines = inputStream.bufferedReader().readLines()
+    private val iterator = lines.iterator()
 
     fun hasNextLine(): Boolean {
         return iterator.hasNext()

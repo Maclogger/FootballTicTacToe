@@ -1,6 +1,6 @@
 package com.example.tictactoe
 
-class RozhodcaWidgetu() {
+class RozhodcaWidgetu {
     fun skontroluj(policka: Array<Array<String>>): Int {
         // Kontrola riadkov
         for (riadok in policka) {

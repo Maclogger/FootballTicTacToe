@@ -14,9 +14,8 @@ import android.widget.Toast
  * Implementation of App Widget functionality.
  */
 class MyTicTacToeWidget : AppWidgetProvider() {
-    var playerTurn = 0
-    var context: Context? = null
-    val policka = Array(3) { Array(3) { "empty" } }
+    private var playerTurn = 0
+    private val policka = Array(3) { Array(3) { "empty" } }
 
     override fun onUpdate(
         context: Context,

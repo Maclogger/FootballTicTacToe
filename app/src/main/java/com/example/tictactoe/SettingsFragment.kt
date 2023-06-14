@@ -58,7 +58,7 @@ class SettingsFragment : Fragment() {
         }
 
 
-        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentMainStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre hlavný fragment
             val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
             val backgroundColor = a?.getColor(0, 0)
@@ -67,7 +67,7 @@ class SettingsFragment : Fragment() {
             // Nastav štýl pre jednotlivé komponenty programovo
         }
 
-        sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentSecondaryStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre jednotlivé komponenty programovo
             view.findViewById<TextView>(R.id.stylText).setTextAppearance(style)
             view.findViewById<TextView>(R.id.stylJazyk).setTextAppearance(style)
@@ -99,14 +99,14 @@ class SettingsFragment : Fragment() {
     private fun nastavStyle(view: View, idStylu: Int) {
 
         if (idStylu == 0) {
-            sharedViewModel.currentMainStyle = MutableLiveData(R.style.mainGreenStyle)
-            sharedViewModel.currentSecondaryStyle = MutableLiveData(R.style.secondaryGreenStyle)
+            sharedViewModel.setCurrentMainStyle(R.style.mainGreenStyle)
+            sharedViewModel.setCurrentSecondaryStyle(R.style.secondaryGreenStyle)
         } else if (idStylu == 1) {
-            sharedViewModel.currentMainStyle = MutableLiveData(R.style.mainPurpleStyle)
-            sharedViewModel.currentSecondaryStyle = MutableLiveData(R.style.secondaryPurpleStyle)
+            sharedViewModel.setCurrentMainStyle(R.style.mainPurpleStyle)
+            sharedViewModel.setCurrentSecondaryStyle(R.style.secondaryPurpleStyle)
         } else if (idStylu == 2) {
-            sharedViewModel.currentMainStyle = MutableLiveData(R.style.mainDarkStyle)
-            sharedViewModel.currentSecondaryStyle = MutableLiveData(R.style.secondaryDarkStyle)
+            sharedViewModel.setCurrentMainStyle(R.style.mainDarkStyle)
+            sharedViewModel.setCurrentSecondaryStyle(R.style.secondaryDarkStyle)
         }
         Navigation.findNavController(view).navigate(R.id.navigateToTitleFragment)
     }

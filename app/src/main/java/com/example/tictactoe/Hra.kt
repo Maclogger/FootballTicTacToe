@@ -11,12 +11,15 @@ import kotlin.random.Random
 
 class Hra(private val view: View, difficulty: Int?, private val gameFragment: GameFragment) {
 
-    val policka = Array(4) { Array(4) { "empty" } }
-    var hracNaRade = Random.nextInt(2)
-    val db: SQLiteDatabase
-    val databaseHelper: MyDatabaseHelper
-    val rozhodca = Rozhodca(this)
+    private val policka = Array(4) { Array(4) { "empty" } }
+    private var hracNaRade = Random.nextInt(2)
+    private val db: SQLiteDatabase
+    private val databaseHelper: MyDatabaseHelper
+    private val rozhodca = Rozhodca(this)
 
+    fun getHracaNaRade() : Int {
+        return hracNaRade
+    }
 
     init {
         policka[0][0] = "koniec"
@@ -62,7 +65,7 @@ class Hra(private val view: View, difficulty: Int?, private val gameFragment: Ga
             gameFragment.nespravnaOdpoved()
         }
 
-        gameFragment.kliknutePolicko = null
+        gameFragment.setKliknutePolicko(null)
         posunTah()
         gameFragment.aktualizujGui(this, view, gridLayout)
         val vysledokKola = rozhodca.skontroluj(3)
@@ -73,6 +76,10 @@ class Hra(private val view: View, difficulty: Int?, private val gameFragment: Ga
 
     private fun posunTah() {
         hracNaRade = (hracNaRade + 1) % 2
+    }
+
+    fun getPolicka(): Array<Array<String>> {
+        return policka
     }
 }
 

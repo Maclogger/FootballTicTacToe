@@ -1,9 +1,7 @@
 package com.example.tictactoe
 
-import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -25,9 +23,10 @@ import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 
 class GameFragment : Fragment() {
-    var kliknutePolicko: ImageView? = null
-    lateinit var rootview: View
+    private var kliknutePolicko: ImageView? = null
+    private lateinit var rootview: View
     private val sharedViewModel by activityViewModels<SharedViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +37,7 @@ class GameFragment : Fragment() {
         val difficulty = arguments?.getInt("difficulty")
         this.spustiHru(rootview, difficulty)
 
-        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentMainStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre hlavný fragment
             val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
             val backgroundColor = a?.getColor(0, 0)
@@ -52,13 +51,13 @@ class GameFragment : Fragment() {
     private fun spustiHru(view: View, difficulty: Int?) {
         val gridLayout = view.findViewById<GridLayout>(R.id.polickaGrid)
         val hra = Hra(view, difficulty, this)
-        nastavListenerNaKoniecButton(view, gridLayout)
+        nastavListenerNaKoniecButton(gridLayout)
         aktualizujGui(hra, view, gridLayout)
         nastavListeneryNaPolicka(view, hra, gridLayout)
         nastavListenerNaPotvrdenieTextu(view, hra)
     }
 
-    private fun nastavListenerNaKoniecButton(view: View, gridLayout: GridLayout) {
+    private fun nastavListenerNaKoniecButton(gridLayout: GridLayout) {
         val imageView = gridLayout.getChildAt(0) as ImageView
         imageView.setOnClickListener {
             val snackbar = Snackbar.make(rootview, getString(R.string.naozaj_skoncit_hru), Snackbar.LENGTH_LONG)
@@ -89,9 +88,9 @@ class GameFragment : Fragment() {
         editText.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 var i = 0
-                for (r in 0..hra.policka.size - 1) {
-                    for (s in 0..hra.policka[r].size - 1) {
-                        val resourceId = view.context.resources.getIdentifier(hra.policka[r][s], "drawable", view.context.packageName)
+                for (r in 0..hra.getPolicka().size - 1) {
+                    for (s in 0..hra.getPolicka()[r].size - 1) {
+                        val resourceId = view.context.resources.getIdentifier(hra.getPolicka()[r][s], "drawable", view.context.packageName)
                         val gridLayout = view.findViewById<GridLayout>(R.id.polickaGrid)
                         if (gridLayout != null) {
                             if (gridLayout.getChildAt(i) == kliknutePolicko) {
@@ -118,8 +117,8 @@ class GameFragment : Fragment() {
 
     private fun nastavListeneryNaPolicka(view: View, hra: Hra, gridLayout: GridLayout) {
         var i = 5
-        for (r in 1..hra.policka.size - 1) {
-            for (s in 1..hra.policka[r].size - 1) {
+        for (r in 1..hra.getPolicka().size - 1) {
+            for (s in 1..hra.getPolicka()[r].size - 1) {
                 val imageView = gridLayout.getChildAt(i) as ImageView
                 if (imageView.getTag() != "polozene") {
                     imageView.setOnClickListener {
@@ -150,7 +149,7 @@ class GameFragment : Fragment() {
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
     }
 
-    public fun aktualizujGui(hra: Hra, view: View, gridLayout: GridLayout?) {
+    fun aktualizujGui(hra: Hra, view: View, gridLayout: GridLayout?) {
         zrusKlavesnicu()
         val handler = Handler(Looper.getMainLooper())
         nastavPovolenieTextInputu(view, kliknutePolicko != null)
@@ -172,21 +171,19 @@ class GameFragment : Fragment() {
         inputMethodManager.hideSoftInputFromWindow(rootview?.rootView?.windowToken, 0)
     }
 
-
-
     private fun aktualizujHracaNaRade(hra: Hra, view: View) {
-        if (hra.hracNaRade == 0) {
+        if (hra.getHracaNaRade() == 0) {
             (view.findViewById(R.id.hracNaRadeObrazok) as ImageView).setImageResource(R.drawable.ocko)
-        } else if (hra.hracNaRade == 1) {
+        } else if (hra.getHracaNaRade() == 1) {
             (view.findViewById(R.id.hracNaRadeObrazok) as ImageView).setImageResource(R.drawable.xko)
         }
     }
 
     private fun aktualizujPolicka(hra: Hra, view: View, gridLayout: GridLayout?) {
         var i = 0
-        for (r in 0..hra.policka.size - 1) {
-            for (s in 0..hra.policka[r].size - 1) {
-                val resourceId = view.context.resources.getIdentifier(hra.policka[r][s], "drawable", view.context.packageName)
+        for (r in 0..hra.getPolicka().size - 1) {
+            for (s in 0..hra.getPolicka()[r].size - 1) {
+                val resourceId = view.context.resources.getIdentifier(hra.getPolicka()[r][s], "drawable", view.context.packageName)
                 if (gridLayout != null) {
                     (gridLayout.getChildAt(i) as ImageView).setImageResource(resourceId)
                 }
@@ -233,5 +230,9 @@ class GameFragment : Fragment() {
         val bundle = Bundle()
         bundle.putInt("vysledok", vysledokKola)
         Navigation.findNavController(rootview).navigate(R.id.navigateToKoniecHry, bundle)
+    }
+
+    fun setKliknutePolicko(policko: ImageView?) {
+        kliknutePolicko = policko
     }
 }

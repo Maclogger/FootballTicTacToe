@@ -6,9 +6,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SharedViewModel : ViewModel() {
-    var currentMainStyle = MutableLiveData(R.style.mainGreenStyle)
-    var currentSecondaryStyle = MutableLiveData(R.style.secondaryGreenStyle)
+    private var currentMainStyle = MutableLiveData(R.style.mainGreenStyle)
+    private var currentSecondaryStyle = MutableLiveData(R.style.secondaryGreenStyle)
 
+    fun getCurrentMainStyle(): MutableLiveData<Int> {
+        return currentMainStyle
+    }
+
+    fun setCurrentMainStyle(style: Int) {
+        currentMainStyle.value = style
+    }
+
+    fun getCurrentSecondaryStyle(): MutableLiveData<Int> {
+        return currentSecondaryStyle
+    }
+
+    fun setCurrentSecondaryStyle(style: Int) {
+        currentSecondaryStyle.value = style
+    }
     init {
         Log.d("SharedViewModel", "Init block executed")
         when (AppCompatDelegate.getDefaultNightMode()) {

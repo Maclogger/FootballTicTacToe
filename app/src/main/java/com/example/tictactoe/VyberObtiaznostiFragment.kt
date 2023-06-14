@@ -27,7 +27,7 @@ class VyberObtiaznostiFragment : Fragment() {
             bundle.putInt("difficulty", 1) // 1 pre strednú obtiažnosť
             androidx.navigation.Navigation.findNavController(view).navigate(com.example.tictactoe.R.id.navigateToGameFragment, bundle)
         }
-        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentMainStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre hlavný fragment
             val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
             val backgroundColor = a?.getColor(0, 0)
@@ -35,7 +35,7 @@ class VyberObtiaznostiFragment : Fragment() {
             backgroundColor?.let { view.setBackgroundColor(it) }
         }
 
-        sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentSecondaryStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre jednotlivé komponenty programovo
             view.findViewById<TextView>(R.id.buttonEasy).setTextAppearance(style)
             view.findViewById<TextView>(R.id.buttonMedium).setTextAppearance(style)

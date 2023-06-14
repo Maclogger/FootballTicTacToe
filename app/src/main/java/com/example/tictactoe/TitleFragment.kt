@@ -29,7 +29,7 @@ class TitleFragment : Fragment() {
         view.findViewById<Button>(R.id.buttonSettings).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.navigateToSettingsFragment)
         }
-        sharedViewModel.currentMainStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentMainStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre hlavný fragment
             val a = context?.obtainStyledAttributes(style, intArrayOf(android.R.attr.background))
             val backgroundColor = a?.getColor(0, 0)
@@ -39,7 +39,7 @@ class TitleFragment : Fragment() {
             view.findViewById<TextView>(R.id.nazovHryMain).setTextAppearance(style)
         }
 
-        sharedViewModel.currentSecondaryStyle.observe(viewLifecycleOwner) { style ->
+        sharedViewModel.getCurrentSecondaryStyle().observe(viewLifecycleOwner) { style ->
             // Nastav štýl pre jednotlivé komponenty programovo
             view.findViewById<TextView>(R.id.buttonMultiPlayer).setTextAppearance(style)
             view.findViewById<TextView>(R.id.buttonSettings).setTextAppearance(style)
